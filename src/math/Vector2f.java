@@ -74,6 +74,11 @@ public class Vector2f {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
+    }
+
     public static Vector2f getIVector() { return new Vector2f(1.0f, 0.0f); }
     public static Vector2f getJVector() { return new Vector2f(0.0f, 1.0f); }
     public static Vector2f getOne() { return new Vector2f(1.0f, 1.0f); }

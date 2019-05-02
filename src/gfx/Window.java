@@ -59,6 +59,7 @@ public class Window {
 
     public boolean shouldClose() { return GLFW.glfwWindowShouldClose(window); }
 
+    public long getWindow() { return window; }
     public String getTitle() { return title; }
     public int getPosX() { return posX; }
     public int getPosY() { return posY; }
