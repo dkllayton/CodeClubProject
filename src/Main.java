@@ -4,6 +4,7 @@ import org.lwjgl.opengl.GL;
 import org.lwjgl.opengles.GLES;
 import org.lwjgl.opengles.GLES20;
 import org.lwjgl.system.Configuration;
+import ui.Keyboard;
 import ui.Mouse;
 
 public class Main {
@@ -14,6 +15,7 @@ public class Main {
         GLES.createCapabilities();
 
         Mouse mouse = new Mouse(window);
+        Keyboard keyboard = new Keyboard(window);
 
         while (!window.shouldClose()) {
             GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
