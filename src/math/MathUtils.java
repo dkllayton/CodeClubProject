@@ -16,15 +16,12 @@ public class MathUtils {
     }
 
     public static float sin(float theta, int terms) {
+        theta %= 2 * Math.PI;
         if (terms > 0) {
             float answer = 0.0f;
-            boolean positive = true;
             for (int n = 0; n < terms; n++) {
-                float term = (1.0f / factorial(2 * n + 1)) * pow(theta, 2 * n + 1);
-                if (!positive)
-                    term = -term;
+                float term = (MathUtils.pow(-1.0f, n) / factorial(2 * n + 1)) * pow(theta, 2 * n + 1);
                 answer += term;
-                positive = !positive;
             }
             return answer;
         } else {
@@ -33,15 +30,12 @@ public class MathUtils {
     }
 
     public static float cos(float theta, int terms) {
+        theta %= 2 * Math.PI;
         if (terms > 0) {
             float answer = 0.0f;
-            boolean positive = true;
             for (int n = 0; n < terms; n++) {
-                float term = (1.0f / factorial(2 * n)) * pow(theta, 2 * n);
-                if (!positive)
-                    term = -term;
+                float term = (MathUtils.pow(-1.0f, n) / factorial(2 * n)) * pow(theta, 2 * n);
                 answer += term;
-                positive = !positive;
             }
             return answer;
         } else {
@@ -56,12 +50,12 @@ public class MathUtils {
         return sin(theta, digits) / cos(theta, digits);
     }
 
-    public static int factorial(int num) {
+    public static long factorial(int num) {
         if (num < 0)
             throw new NumberFormatException("Factorial is undefined for negative values.");
         if (num == 0)
             return 1;
-        int answer = num;
+        long answer = num;
         for (int i = num - 1;i > 0;i--) {
             answer *= i;
         }
